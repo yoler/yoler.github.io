@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Yoler</title>
+  <subtitle>你说向前看 毕竟将来重要</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-01-17T06:48:59.322Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Yoler|雷永亮</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>flex布局总结</title>
+    <link href="http://yoursite.com/2017/01/17/flex%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2017/01/17/flex布局总结/</id>
+    <published>2017-01-17T06:47:19.000Z</published>
+    <updated>2017-01-17T06:48:59.322Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初笔</title>
+    <link href="http://yoursite.com/2017/01/16/%E5%88%9D%E7%AC%94/"/>
+    <id>http://yoursite.com/2017/01/16/初笔/</id>
+    <published>2017-01-16T05:42:38.000Z</published>
+    <updated>2017-01-16T10:23:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>以前 总想有一个属于自己的网站<br>用自己的名字来命名</p>
+<p>写一些个人简介<br>写一写生活杂谈</p>
+<p>终于<br>今天搭建了自己的专属博客<br>以后生活的点点滴滴都将呈现在这里</p>
+<p>或许<br>写着 写着<br>我就会变成一个作家<br>这也是不错的</p>
+<p>以前从没有写过学习笔记<br>不爱写<br>也没有地方写<br>csdn的博客太丑<br>作为一个前端开发工程师<br>对美观的要求是极致的<br>这个主题还暂算满意</p>
+<p>成长的过程中需要不断的积累<br>人说<br>好记性 不如烂笔头<br>此刻<br>我是绚烂的</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;以前 总想有一个属于自己的网站&lt;br&gt;用自己的名字来命名&lt;/p&gt;
+&lt;p&gt;写一些个人简介&lt;br&gt;写一写生活杂谈&lt;/p&gt;
+&lt;p&gt;终于&lt;br&gt;今天搭建了自己的专属博客&lt;br&gt;以后生活的点点滴滴都将呈现在这里&lt;/p&gt;
+&lt;p&gt;或许&lt;br&gt;写着 写着&lt;br&gt;我就会变成一个作家&lt;br&gt;这
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+</feed>
