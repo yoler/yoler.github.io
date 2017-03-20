@@ -147,6 +147,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vue-webpack配置文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/20/vue-webpack配置文件/">&#39;vue-webpack配置文件&#39;</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/20/vue-webpack配置文件/" class="archive-article-date">
+  	<time datetime="2017-03-20T01:24:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天来总结一下自己搭建vue开发环境的一些心得，其实最重要的就是webpack的配置，下面直接贴出配置代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">var path = require(&quot;path&quot;);</div><div class="line">module.exports = &#123;</div><div class="line">	entry: &#123;</div><div class="line">		app: path.resolve(__dirname, &quot;./main.js&quot;)</div><div class="line">		// entry:顾名思义入口文件,app/main.js,输入名字为 app.js</div><div class="line">	&#125;,</div><div class="line">	output: &#123;</div><div class="line">		path: path.resolve(__dirname, &quot;./build&quot;),//输出路径</div><div class="line">		publicPath: &apos;build/&apos;, //调试或者 CDN 之类的域名,稍候会用到</div><div class="line">		filename: &quot;[name].js&quot; //配置生成的文件名</div><div class="line">	&#125;,</div><div class="line">	resolve: &#123;</div><div class="line">	   // require时省略的扩展名，如：require(&apos;module&apos;) 不需要module.js</div><div class="line">	   extensions: [&apos;&apos;, &apos;.js&apos;, &apos;.vue&apos;],</div><div class="line">   &#125;,</div><div class="line">	module: &#123;</div><div class="line">		loaders: [</div><div class="line">			&#123;</div><div class="line">				test: /\.vue$/,</div><div class="line">				loader: &apos;vue&apos;</div><div class="line">			&#125;,</div><div class="line">			&#123;   test: /\.css?$/,</div><div class="line">				loader: &apos;file&apos;</div><div class="line">			&#125;,</div><div class="line">			&#123;</div><div class="line">				test: /\.js$/,</div><div class="line">				loader: &apos;babel&apos;,</div><div class="line">				exclude: /node_modules/</div><div class="line"></div><div class="line">			&#125;,</div><div class="line">			&#123;</div><div class="line">				test: /\.(png|js?eg|gif|svg|woff2?|eot|ttf)(\?.*)?$/,</div><div class="line">				loader: &apos;url&apos;,</div><div class="line"></div><div class="line">			&#125;</div><div class="line"></div><div class="line">		]//模块加载器，默认null</div><div class="line">	&#125;,</div><div class="line">	babel: &#123;</div><div class="line">        presets: [&apos;es2015&apos;],</div><div class="line">        plugins: [&apos;transform-runtime&apos;]</div><div class="line">    &#125;,</div><div class="line">	plugins: [] //插件，默认null</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>以及package.json文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;h5app&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;&quot;,</div><div class="line">  &quot;main&quot;: &quot;index.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;author&quot;: &quot;yoler&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;babel-core&quot;: &quot;^6.22.1&quot;,</div><div class="line">    &quot;babel-loader&quot;: &quot;^6.2.10&quot;,</div><div class="line">    &quot;babel-plugin-istanbul&quot;: &quot;^3.1.2&quot;,</div><div class="line">    &quot;babel-plugin-transform-runtime&quot;: &quot;^6.22.0&quot;,</div><div class="line">    &quot;babel-preset-es2015&quot;: &quot;^6.22.0&quot;,</div><div class="line">    &quot;babel-preset-stage-2&quot;: &quot;^6.22.0&quot;,</div><div class="line">    &quot;babel-register&quot;: &quot;^6.22.0&quot;,</div><div class="line">    &quot;css-loader&quot;: &quot;^0.26.4&quot;,</div><div class="line">    &quot;element-ui&quot;: &quot;^1.2.4&quot;,</div><div class="line">    &quot;file-loader&quot;: &quot;^0.10.1&quot;,</div><div class="line">    &quot;url-loader&quot;: &quot;^0.5.8&quot;,</div><div class="line">    &quot;vue&quot;: &quot;^2.2.2&quot;,</div><div class="line">    &quot;vue-loader&quot;: &quot;^11.1.4&quot;,</div><div class="line">    &quot;vue-resource&quot;: &quot;^1.2.1&quot;,</div><div class="line">    &quot;vue-router&quot;: &quot;^2.3.0&quot;,</div><div class="line">    &quot;vue-style-loader&quot;: &quot;^2.0.0&quot;,</div><div class="line">    &quot;vue-template-compiler&quot;: &quot;^2.2.2&quot;,</div><div class="line">    &quot;vuex&quot;: &quot;^2.2.1&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/20/vue-webpack配置文件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-模拟滚动条" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

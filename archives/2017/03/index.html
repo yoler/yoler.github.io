@@ -6,21 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>模拟滚动条 | Yoler</title>
+  <title>Archives: 2017/3 | Yoler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近由于需求原因，用vue做开发，自己动手模拟原生滚动条,做过之后觉得也没有那么难点击观看Demo
-下面直接贴出部分核心代码12345678910111213141516initscrollbar () &amp;#123;   if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &amp;lt;= 0) &amp;#">
-<meta property="og:type" content="article">
-<meta property="og:title" content="模拟滚动条">
-<meta property="og:url" content="http://yoursite.com/2017/02/28/模拟滚动条/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Yoler">
+<meta property="og:url" content="http://yoursite.com/archives/2017/03/index.html">
 <meta property="og:site_name" content="Yoler">
-<meta property="og:description" content="最近由于需求原因，用vue做开发，自己动手模拟原生滚动条,做过之后觉得也没有那么难点击观看Demo
-下面直接贴出部分核心代码12345678910111213141516initscrollbar () &amp;#123;   if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &amp;lt;= 0) &amp;#">
-<meta property="og:updated_time" content="2017-03-01T02:37:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="模拟滚动条">
-<meta name="twitter:description" content="最近由于需求原因，用vue做开发，自己动手模拟原生滚动条,做过之后觉得也没有那么难点击观看Demo
-下面直接贴出部分核心代码12345678910111213141516initscrollbar () &amp;#123;   if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &amp;lt;= 0) &amp;#">
+<meta name="twitter:title" content="Yoler">
   
     <link rel="alternative" href="/atom.xml" title="Yoler" type="application/atom+xml">
   
@@ -152,43 +145,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-模拟滚动条" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      模拟滚动条
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/03/20/vue-webpack配置文件/" class="archive-article-date">
+  	<time datetime="2017-03-20T01:24:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-20</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/20/vue-webpack配置文件/">&#39;vue-webpack配置文件&#39;</a>
     </h1>
   
 
-        
-        <a href="/2017/02/28/模拟滚动条/" class="archive-article-date">
-  	<time datetime="2017-02-28T09:49:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近由于需求原因，用vue做开发，自己动手模拟原生滚动条,做过之后觉得也没有那么难<br>点击观看<a href="http://leiyongliang.github.io/scroll" target="_blank" rel="external">Demo</a></p>
-<p>下面直接贴出部分核心代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">initscrollbar () &#123;</div><div class="line">   if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &lt;= 0) &#123;</div><div class="line">     this.rate = this.$refs.scroll_box.offsetHeight / this.$refs.page_content.offsetHeight</div><div class="line">     this.scroll_bar_height = this.rate * this.$refs.scroll_box.offsetHeight - 4 + &apos;px&apos;</div><div class="line">     this.scroll_bar_top = -this.speed * this.rate + 2 + &apos;px&apos;</div><div class="line">     if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &gt;= this.speed) &#123;</div><div class="line">       this.speed = this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight</div><div class="line">       this.page_content_top = this.speed + &apos;px&apos;</div><div class="line">       this.scroll_bar_top = -this.speed * this.rate + 2 + &apos;px&apos;</div><div class="line">     &#125;</div><div class="line">   &#125; else &#123;</div><div class="line">     this.speed = 0</div><div class="line">     this.page_content_top = this.speed + &apos;px&apos;</div><div class="line">     this.scroll_bar_height = 0</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
-<p>这一段代码是初始化滚动条的高度和位置，当窗口大小发生改变的时候通过容器高度和内容高度来计算出新的比率rate，再通过这个rate初始化滚动条的高度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">this.scroll_bar_height = this.rate * this.$refs.scroll_box.offsetHeight - 4 + &apos;px&apos;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">scroll_bar_down (event) &#123;</div><div class="line">   this.disy = event.clientY</div><div class="line">   document.addEventListener(&apos;mousemove&apos;, this.scroll_bar_move)</div><div class="line">   document.addEventListener(&apos;mouseup&apos;, this.scroll_bar_up)</div><div class="line">   this.curspeed = this.speed * this.rate</div><div class="line">   this.mousestate = 1</div><div class="line"> &#125;,</div><div class="line"> scroll_bar_move (event) &#123;</div><div class="line">   document.body.style.cursor = &apos;default&apos;</div><div class="line">   let y = this.disy - event.clientY</div><div class="line">   this.speed = (this.curspeed + y) / this.rate</div><div class="line">   if (this.speed &gt;= 0) &#123;</div><div class="line">     this.speed = 0</div><div class="line">   &#125;</div><div class="line">   if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &gt;= this.speed) &#123;</div><div class="line">     this.speed = this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight</div><div class="line">   &#125;</div><div class="line">   this.page_content_top = this.speed + &apos;px&apos;</div><div class="line">   this.scroll_bar_top = -this.speed * this.rate + 2 + &apos;px&apos;</div><div class="line"> &#125;,</div><div class="line"> scroll_bar_up () &#123;</div><div class="line">   document.removeEventListener(&apos;mousemove&apos;, this.scroll_bar_move)</div><div class="line">   this.mousestate = 0</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p>这一段代码是滚动条响应鼠标拖拽事件，当鼠标按下的时候记录此时的Y坐标，然后移动鼠标，计算移动距离。<br><strong>注意</strong>： 滚动条移动的距离和鼠标移动的距离相等，而内容移动的距离要除以对应的比率，也就是rate</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">scroll (event) &#123;</div><div class="line">   if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &lt;= 0) &#123;</div><div class="line">     if (event.wheelDelta === 120) &#123;</div><div class="line">       this.speed += 50</div><div class="line">       if (this.speed &gt;= 0) &#123;</div><div class="line">         this.speed = 0</div><div class="line">       &#125;</div><div class="line">       this.page_content_top = this.speed + &apos;px&apos;</div><div class="line">       this.scroll_bar_top = -this.speed * this.rate + 2 + &apos;px&apos;</div><div class="line">     &#125; else if (event.wheelDelta === -120) &#123;</div><div class="line">       this.speed -= 50</div><div class="line">       if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &gt;= this.speed) &#123;</div><div class="line">         this.speed = this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight</div><div class="line">       &#125;</div><div class="line">       this.page_content_top = this.speed + &apos;px&apos;</div><div class="line">       this.scroll_bar_top = -this.speed * this.rate + 2 + &apos;px&apos;</div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p>这段代码是滚动条响应鼠标滚动事件，当鼠标滚轮滚动一下，对应滚动条的移动距离，可自行设定。</p>
-<p>下面贴出Html代码，仅供参考<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;scroll_box&quot; ref=&quot;scroll_box&quot;&gt;</div><div class="line">     &lt;div class=&quot;page_content&quot; :style=&quot;&#123;top: page_content_top&#125;&quot; ref=&quot;page_content&quot;&gt;</div><div class="line">         &lt;div class=&quot;page_item&quot; v-for=&quot;(value, index) in pages&quot;&gt;</div><div class="line">             &lt;div class=&quot;page_wrap&quot; @click=&quot;page_seledt(index)&quot; :class=&quot;&#123;border: value.state&#125;&quot;&gt;</div><div class="line">                 &lt;div class=&quot;page_thumbnail&quot;&gt;&lt;/div&gt;</div><div class="line">                 &lt;div class=&quot;page_name&quot;&gt;</div><div class="line">                     &lt;span&gt;&#123;&#123;index&#125;&#125;&lt;/span&gt;</div><div class="line">                     &lt;input type=&quot;text&quot; v-model=&quot;value.name&quot;&gt;</div><div class="line">                 &lt;/div&gt;</div><div class="line">                 &lt;div class=&quot;page_tool&quot; v-show=&quot;value.state&quot;&gt;</div><div class="line">                     &lt;div class=&quot;page_del&quot;&gt;&lt;/div&gt;</div><div class="line">                     &lt;div class=&quot;page_liked&quot;&gt;&lt;/div&gt;</div><div class="line">                 &lt;/div&gt;</div><div class="line">             &lt;/div&gt;</div><div class="line"></div><div class="line">         &lt;/div&gt;</div><div class="line">     &lt;/div&gt;</div><div class="line">     &lt;div class=&quot;warp_scroll_bar&quot; v-show=&quot;scroll_bar_state&quot;  ref=&quot;scroll_bar&quot;&gt;</div><div class="line">         &lt;div class=&quot;scroll_bar&quot; :style=&quot;&#123;top: scroll_bar_top,height: scroll_bar_height&#125;&quot; :class=&quot;&#123;ready:  mousestate&#125;&quot;&gt;&lt;/div&gt;</div><div class="line">     &lt;/div&gt;</div><div class="line"> &lt;/div&gt;</div></pre></td></tr></table></figure></p>
-<p>如果大家有什么意见或建议，请在下方评论区留言</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -200,64 +186,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/03/20/vue-webpack配置文件/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          &#39;vue-webpack配置文件&#39;
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/02/22/如何提升阅读效率/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">如何提升阅读效率</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-  <div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="模拟滚动条" data-title="模拟滚动条" data-url="http://yoursite.com/2017/02/28/模拟滚动条/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"yoler"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
+    </div></section>
   
 
-
+    
 
 
           </div>
@@ -288,8 +229,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
