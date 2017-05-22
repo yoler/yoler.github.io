@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-20T01:30:55.000Z</updated>
+  <updated>2017-05-22T01:57:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>文件下载</title>
+    <link href="http://yoursite.com/2017/05/22/File-DownLoad/"/>
+    <id>http://yoursite.com/2017/05/22/File-DownLoad/</id>
+    <published>2017-05-22T01:52:34.000Z</published>
+    <updated>2017-05-22T01:57:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;button onclick=&quot;download(&apos;11.txt&apos;, &apos;fsdfdsfsdfsdfsdfsdfsf&apos;)&quot;&gt;下载&lt;/button&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function download(filename, content) &#123;</div><div class="line">	var aLink = document.createElement(&apos;a&apos;)</div><div class="line">	var blob = new Blob([content])</div><div class="line">	var event = new MouseEvent(&apos;click&apos;, &#123;</div><div class="line">	  &apos;view&apos;: window,</div><div class="line">	  &apos;bubbles&apos;: true, //是否冒泡</div><div class="line">	  &apos;cancelable&apos;: true //事件是否可以取消</div><div class="line">	&#125;);</div><div class="line">	aLink.download = filename</div><div class="line">	aLink.href = URL.createObjectURL(blob)</div><div class="line">	aLink.dispatchEvent(event)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;lin
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>vue-webpack配置文件</title>
