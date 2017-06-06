@@ -22,13 +22,25 @@
     <published>2017-05-22T01:52:34.000Z</published>
     <updated>2017-05-22T01:57:00.000Z</updated>
     
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;button onclick=&quot;download(&apos;11.txt&apos;, &apos;fsdfdsfsdfsdfsdfsdfsf&apos;)&quot;&gt;下载&lt;/button&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function download(filename, content) &#123;</div><div class="line">	var aLink = document.createElement(&apos;a&apos;)</div><div class="line">	var blob = new Blob([content])</div><div class="line">	var event = new MouseEvent(&apos;click&apos;, &#123;</div><div class="line">	  &apos;view&apos;: window,</div><div class="line">	  &apos;bubbles&apos;: true, //是否冒泡</div><div class="line">	  &apos;cancelable&apos;: true //事件是否可以取消</div><div class="line">	&#125;);</div><div class="line">	aLink.download = filename</div><div class="line">	aLink.href = URL.createObjectURL(blob)</div><div class="line">	aLink.dispatchEvent(event)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
+    <content type="html"><![CDATA[<pre><code>&lt;button onclick=&quot;download(&#39;11.txt&#39;, &#39;fsdfdsfsdfsdfsdfsdfsf&#39;)&quot;&gt;下载&lt;/button&gt;
+</code></pre><pre><code>function download(filename, content) {
+    var aLink = document.createElement(&#39;a&#39;)
+    var blob = new Blob([content])
+    var event = new MouseEvent(&#39;click&#39;, {
+      &#39;view&#39;: window,
+      &#39;bubbles&#39;: true, //是否冒泡
+      &#39;cancelable&#39;: true //事件是否可以取消
+    });
+    aLink.download = filename
+    aLink.href = URL.createObjectURL(blob)
+    aLink.dispatchEvent(event)
+}
+</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;lin
+      &lt;pre&gt;&lt;code&gt;&amp;lt;button onclick=&amp;quot;download(&amp;#39;11.txt&amp;#39;, &amp;#39;fsdfdsfsdfsdfsdfsdfsf&amp;#39;)&amp;quot;&amp;gt;下载&amp;lt;/button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre
     
     </summary>
     
@@ -44,13 +56,91 @@
     <published>2017-03-20T01:24:49.000Z</published>
     <updated>2017-03-20T01:30:55.000Z</updated>
     
-    <content type="html"><![CDATA[<p>今天来总结一下自己搭建vue开发环境的一些心得，其实最重要的就是webpack的配置，下面直接贴出配置代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">var path = require(&quot;path&quot;);</div><div class="line">module.exports = &#123;</div><div class="line">	entry: &#123;</div><div class="line">		app: path.resolve(__dirname, &quot;./main.js&quot;)</div><div class="line">		// entry:顾名思义入口文件,app/main.js,输入名字为 app.js</div><div class="line">	&#125;,</div><div class="line">	output: &#123;</div><div class="line">		path: path.resolve(__dirname, &quot;./build&quot;),//输出路径</div><div class="line">		publicPath: &apos;build/&apos;, //调试或者 CDN 之类的域名,稍候会用到</div><div class="line">		filename: &quot;[name].js&quot; //配置生成的文件名</div><div class="line">	&#125;,</div><div class="line">	resolve: &#123;</div><div class="line">	   // require时省略的扩展名，如：require(&apos;module&apos;) 不需要module.js</div><div class="line">	   extensions: [&apos;&apos;, &apos;.js&apos;, &apos;.vue&apos;],</div><div class="line">   &#125;,</div><div class="line">	module: &#123;</div><div class="line">		loaders: [</div><div class="line">			&#123;</div><div class="line">				test: /\.vue$/,</div><div class="line">				loader: &apos;vue&apos;</div><div class="line">			&#125;,</div><div class="line">			&#123;   test: /\.css?$/,</div><div class="line">				loader: &apos;file&apos;</div><div class="line">			&#125;,</div><div class="line">			&#123;</div><div class="line">				test: /\.js$/,</div><div class="line">				loader: &apos;babel&apos;,</div><div class="line">				exclude: /node_modules/</div><div class="line"></div><div class="line">			&#125;,</div><div class="line">			&#123;</div><div class="line">				test: /\.(png|js?eg|gif|svg|woff2?|eot|ttf)(\?.*)?$/,</div><div class="line">				loader: &apos;url&apos;,</div><div class="line"></div><div class="line">			&#125;</div><div class="line"></div><div class="line">		]//模块加载器，默认null</div><div class="line">	&#125;,</div><div class="line">	babel: &#123;</div><div class="line">        presets: [&apos;es2015&apos;],</div><div class="line">        plugins: [&apos;transform-runtime&apos;]</div><div class="line">    &#125;,</div><div class="line">	plugins: [] //插件，默认null</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>以及package.json文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;h5app&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;&quot;,</div><div class="line">  &quot;main&quot;: &quot;index.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;author&quot;: &quot;yoler&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;babel-core&quot;: &quot;^6.22.1&quot;,</div><div class="line">    &quot;babel-loader&quot;: &quot;^6.2.10&quot;,</div><div class="line">    &quot;babel-plugin-istanbul&quot;: &quot;^3.1.2&quot;,</div><div class="line">    &quot;babel-plugin-transform-runtime&quot;: &quot;^6.22.0&quot;,</div><div class="line">    &quot;babel-preset-es2015&quot;: &quot;^6.22.0&quot;,</div><div class="line">    &quot;babel-preset-stage-2&quot;: &quot;^6.22.0&quot;,</div><div class="line">    &quot;babel-register&quot;: &quot;^6.22.0&quot;,</div><div class="line">    &quot;css-loader&quot;: &quot;^0.26.4&quot;,</div><div class="line">    &quot;element-ui&quot;: &quot;^1.2.4&quot;,</div><div class="line">    &quot;file-loader&quot;: &quot;^0.10.1&quot;,</div><div class="line">    &quot;url-loader&quot;: &quot;^0.5.8&quot;,</div><div class="line">    &quot;vue&quot;: &quot;^2.2.2&quot;,</div><div class="line">    &quot;vue-loader&quot;: &quot;^11.1.4&quot;,</div><div class="line">    &quot;vue-resource&quot;: &quot;^1.2.1&quot;,</div><div class="line">    &quot;vue-router&quot;: &quot;^2.3.0&quot;,</div><div class="line">    &quot;vue-style-loader&quot;: &quot;^2.0.0&quot;,</div><div class="line">    &quot;vue-template-compiler&quot;: &quot;^2.2.2&quot;,</div><div class="line">    &quot;vuex&quot;: &quot;^2.2.1&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
+    <content type="html"><![CDATA[<p>今天来总结一下自己搭建vue开发环境的一些心得，其实最重要的就是webpack的配置，下面直接贴出配置代码：</p>
+<pre><code>var path = require(&quot;path&quot;);
+module.exports = {
+    entry: {
+        app: path.resolve(__dirname, &quot;./main.js&quot;)
+        // entry:顾名思义入口文件,app/main.js,输入名字为 app.js
+    },
+    output: {
+        path: path.resolve(__dirname, &quot;./build&quot;),//输出路径
+        publicPath: &#39;build/&#39;, //调试或者 CDN 之类的域名,稍候会用到
+        filename: &quot;[name].js&quot; //配置生成的文件名
+    },
+    resolve: {
+       // require时省略的扩展名，如：require(&#39;module&#39;) 不需要module.js
+       extensions: [&#39;&#39;, &#39;.js&#39;, &#39;.vue&#39;],
+   },
+    module: {
+        loaders: [
+            {
+                test: /\.vue$/,
+                loader: &#39;vue&#39;
+            },
+            {   test: /\.css?$/,
+                loader: &#39;file&#39;
+            },
+            {
+                test: /\.js$/,
+                loader: &#39;babel&#39;,
+                exclude: /node_modules/
+
+            },
+            {
+                test: /\.(png|js?eg|gif|svg|woff2?|eot|ttf)(\?.*)?$/,
+                loader: &#39;url&#39;,
+
+            }
+
+        ]//模块加载器，默认null
+    },
+    babel: {
+        presets: [&#39;es2015&#39;],
+        plugins: [&#39;transform-runtime&#39;]
+    },
+    plugins: [] //插件，默认null
+};
+</code></pre><p>以及package.json文件：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;h5app&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;yoler&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;babel-core&quot;: &quot;^6.22.1&quot;,
+    &quot;babel-loader&quot;: &quot;^6.2.10&quot;,
+    &quot;babel-plugin-istanbul&quot;: &quot;^3.1.2&quot;,
+    &quot;babel-plugin-transform-runtime&quot;: &quot;^6.22.0&quot;,
+    &quot;babel-preset-es2015&quot;: &quot;^6.22.0&quot;,
+    &quot;babel-preset-stage-2&quot;: &quot;^6.22.0&quot;,
+    &quot;babel-register&quot;: &quot;^6.22.0&quot;,
+    &quot;css-loader&quot;: &quot;^0.26.4&quot;,
+    &quot;element-ui&quot;: &quot;^1.2.4&quot;,
+    &quot;file-loader&quot;: &quot;^0.10.1&quot;,
+    &quot;url-loader&quot;: &quot;^0.5.8&quot;,
+    &quot;vue&quot;: &quot;^2.2.2&quot;,
+    &quot;vue-loader&quot;: &quot;^11.1.4&quot;,
+    &quot;vue-resource&quot;: &quot;^1.2.1&quot;,
+    &quot;vue-router&quot;: &quot;^2.3.0&quot;,
+    &quot;vue-style-loader&quot;: &quot;^2.0.0&quot;,
+    &quot;vue-template-compiler&quot;: &quot;^2.2.2&quot;,
+    &quot;vuex&quot;: &quot;^2.2.1&quot;
+  }
+}
+</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;今天来总结一下自己搭建vue开发环境的一些心得，其实最重要的就是webpack的配置，下面直接贴出配置代码：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;
+      &lt;p&gt;今天来总结一下自己搭建vue开发环境的一些心得，其实最重要的就是webpack的配置，下面直接贴出配置代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var path = require(&amp;quot;path&amp;quot;);
+module.exports = {
+    entry:
     
     </summary>
     
@@ -67,14 +157,93 @@
     <updated>2017-03-01T02:37:59.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近由于需求原因，用vue做开发，自己动手模拟原生滚动条,做过之后觉得也没有那么难<br>点击观看<a href="http://leiyongliang.github.io/scroll" target="_blank" rel="external">Demo</a></p>
-<p>下面直接贴出部分核心代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">initscrollbar () &#123;</div><div class="line">   if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &lt;= 0) &#123;</div><div class="line">     this.rate = this.$refs.scroll_box.offsetHeight / this.$refs.page_content.offsetHeight</div><div class="line">     this.scroll_bar_height = this.rate * this.$refs.scroll_box.offsetHeight - 4 + &apos;px&apos;</div><div class="line">     this.scroll_bar_top = -this.speed * this.rate + 2 + &apos;px&apos;</div><div class="line">     if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &gt;= this.speed) &#123;</div><div class="line">       this.speed = this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight</div><div class="line">       this.page_content_top = this.speed + &apos;px&apos;</div><div class="line">       this.scroll_bar_top = -this.speed * this.rate + 2 + &apos;px&apos;</div><div class="line">     &#125;</div><div class="line">   &#125; else &#123;</div><div class="line">     this.speed = 0</div><div class="line">     this.page_content_top = this.speed + &apos;px&apos;</div><div class="line">     this.scroll_bar_height = 0</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
-<p>这一段代码是初始化滚动条的高度和位置，当窗口大小发生改变的时候通过容器高度和内容高度来计算出新的比率rate，再通过这个rate初始化滚动条的高度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">this.scroll_bar_height = this.rate * this.$refs.scroll_box.offsetHeight - 4 + &apos;px&apos;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">scroll_bar_down (event) &#123;</div><div class="line">   this.disy = event.clientY</div><div class="line">   document.addEventListener(&apos;mousemove&apos;, this.scroll_bar_move)</div><div class="line">   document.addEventListener(&apos;mouseup&apos;, this.scroll_bar_up)</div><div class="line">   this.curspeed = this.speed * this.rate</div><div class="line">   this.mousestate = 1</div><div class="line"> &#125;,</div><div class="line"> scroll_bar_move (event) &#123;</div><div class="line">   document.body.style.cursor = &apos;default&apos;</div><div class="line">   let y = this.disy - event.clientY</div><div class="line">   this.speed = (this.curspeed + y) / this.rate</div><div class="line">   if (this.speed &gt;= 0) &#123;</div><div class="line">     this.speed = 0</div><div class="line">   &#125;</div><div class="line">   if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &gt;= this.speed) &#123;</div><div class="line">     this.speed = this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight</div><div class="line">   &#125;</div><div class="line">   this.page_content_top = this.speed + &apos;px&apos;</div><div class="line">   this.scroll_bar_top = -this.speed * this.rate + 2 + &apos;px&apos;</div><div class="line"> &#125;,</div><div class="line"> scroll_bar_up () &#123;</div><div class="line">   document.removeEventListener(&apos;mousemove&apos;, this.scroll_bar_move)</div><div class="line">   this.mousestate = 0</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p>这一段代码是滚动条响应鼠标拖拽事件，当鼠标按下的时候记录此时的Y坐标，然后移动鼠标，计算移动距离。<br><strong>注意</strong>： 滚动条移动的距离和鼠标移动的距离相等，而内容移动的距离要除以对应的比率，也就是rate</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">scroll (event) &#123;</div><div class="line">   if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &lt;= 0) &#123;</div><div class="line">     if (event.wheelDelta === 120) &#123;</div><div class="line">       this.speed += 50</div><div class="line">       if (this.speed &gt;= 0) &#123;</div><div class="line">         this.speed = 0</div><div class="line">       &#125;</div><div class="line">       this.page_content_top = this.speed + &apos;px&apos;</div><div class="line">       this.scroll_bar_top = -this.speed * this.rate + 2 + &apos;px&apos;</div><div class="line">     &#125; else if (event.wheelDelta === -120) &#123;</div><div class="line">       this.speed -= 50</div><div class="line">       if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &gt;= this.speed) &#123;</div><div class="line">         this.speed = this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight</div><div class="line">       &#125;</div><div class="line">       this.page_content_top = this.speed + &apos;px&apos;</div><div class="line">       this.scroll_bar_top = -this.speed * this.rate + 2 + &apos;px&apos;</div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p>这段代码是滚动条响应鼠标滚动事件，当鼠标滚轮滚动一下，对应滚动条的移动距离，可自行设定。</p>
-<p>下面贴出Html代码，仅供参考<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;scroll_box&quot; ref=&quot;scroll_box&quot;&gt;</div><div class="line">     &lt;div class=&quot;page_content&quot; :style=&quot;&#123;top: page_content_top&#125;&quot; ref=&quot;page_content&quot;&gt;</div><div class="line">         &lt;div class=&quot;page_item&quot; v-for=&quot;(value, index) in pages&quot;&gt;</div><div class="line">             &lt;div class=&quot;page_wrap&quot; @click=&quot;page_seledt(index)&quot; :class=&quot;&#123;border: value.state&#125;&quot;&gt;</div><div class="line">                 &lt;div class=&quot;page_thumbnail&quot;&gt;&lt;/div&gt;</div><div class="line">                 &lt;div class=&quot;page_name&quot;&gt;</div><div class="line">                     &lt;span&gt;&#123;&#123;index&#125;&#125;&lt;/span&gt;</div><div class="line">                     &lt;input type=&quot;text&quot; v-model=&quot;value.name&quot;&gt;</div><div class="line">                 &lt;/div&gt;</div><div class="line">                 &lt;div class=&quot;page_tool&quot; v-show=&quot;value.state&quot;&gt;</div><div class="line">                     &lt;div class=&quot;page_del&quot;&gt;&lt;/div&gt;</div><div class="line">                     &lt;div class=&quot;page_liked&quot;&gt;&lt;/div&gt;</div><div class="line">                 &lt;/div&gt;</div><div class="line">             &lt;/div&gt;</div><div class="line"></div><div class="line">         &lt;/div&gt;</div><div class="line">     &lt;/div&gt;</div><div class="line">     &lt;div class=&quot;warp_scroll_bar&quot; v-show=&quot;scroll_bar_state&quot;  ref=&quot;scroll_bar&quot;&gt;</div><div class="line">         &lt;div class=&quot;scroll_bar&quot; :style=&quot;&#123;top: scroll_bar_top,height: scroll_bar_height&#125;&quot; :class=&quot;&#123;ready:  mousestate&#125;&quot;&gt;&lt;/div&gt;</div><div class="line">     &lt;/div&gt;</div><div class="line"> &lt;/div&gt;</div></pre></td></tr></table></figure></p>
-<p>如果大家有什么意见或建议，请在下方评论区留言</p>
+<p>下面直接贴出部分核心代码</p>
+<pre><code>   initscrollbar () {
+      if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &lt;= 0) {
+        this.rate = this.$refs.scroll_box.offsetHeight / this.$refs.page_content.offsetHeight
+        this.scroll_bar_height = this.rate * this.$refs.scroll_box.offsetHeight - 4 + &#39;px&#39;
+        this.scroll_bar_top = -this.speed * this.rate + 2 + &#39;px&#39;
+        if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &gt;= this.speed) {
+          this.speed = this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight
+          this.page_content_top = this.speed + &#39;px&#39;
+          this.scroll_bar_top = -this.speed * this.rate + 2 + &#39;px&#39;
+        }
+      } else {
+        this.speed = 0
+        this.page_content_top = this.speed + &#39;px&#39;
+        this.scroll_bar_height = 0
+      }
+    }
+</code></pre><p>这一段代码是初始化滚动条的高度和位置，当窗口大小发生改变的时候通过容器高度和内容高度来计算出新的比率rate，再通过这个rate初始化滚动条的高度</p>
+<pre><code>   this.scroll_bar_height = this.rate * this.$refs.scroll_box.offsetHeight - 4 + &#39;px&#39;
+</code></pre><pre><code>   scroll_bar_down (event) {
+      this.disy = event.clientY
+      document.addEventListener(&#39;mousemove&#39;, this.scroll_bar_move)
+      document.addEventListener(&#39;mouseup&#39;, this.scroll_bar_up)
+      this.curspeed = this.speed * this.rate
+      this.mousestate = 1
+    },
+    scroll_bar_move (event) {
+      document.body.style.cursor = &#39;default&#39;
+      let y = this.disy - event.clientY
+      this.speed = (this.curspeed + y) / this.rate
+      if (this.speed &gt;= 0) {
+        this.speed = 0
+      }
+      if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &gt;= this.speed) {
+        this.speed = this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight
+      }
+      this.page_content_top = this.speed + &#39;px&#39;
+      this.scroll_bar_top = -this.speed * this.rate + 2 + &#39;px&#39;
+    },
+    scroll_bar_up () {
+      document.removeEventListener(&#39;mousemove&#39;, this.scroll_bar_move)
+      this.mousestate = 0
+    }
+</code></pre><p>这一段代码是滚动条响应鼠标拖拽事件，当鼠标按下的时候记录此时的Y坐标，然后移动鼠标，计算移动距离。<br><strong>注意</strong>： 滚动条移动的距离和鼠标移动的距离相等，而内容移动的距离要除以对应的比率，也就是rate</p>
+<pre><code>   scroll (event) {
+      if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &lt;= 0) {
+        if (event.wheelDelta === 120) {
+          this.speed += 50
+          if (this.speed &gt;= 0) {
+            this.speed = 0
+          }
+          this.page_content_top = this.speed + &#39;px&#39;
+          this.scroll_bar_top = -this.speed * this.rate + 2 + &#39;px&#39;
+        } else if (event.wheelDelta === -120) {
+          this.speed -= 50
+          if (this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight &gt;= this.speed) {
+            this.speed = this.$refs.scroll_box.offsetHeight - this.$refs.page_content.offsetHeight
+          }
+          this.page_content_top = this.speed + &#39;px&#39;
+          this.scroll_bar_top = -this.speed * this.rate + 2 + &#39;px&#39;
+        }
+      }
+    }
+</code></pre><p>这段代码是滚动条响应鼠标滚动事件，当鼠标滚轮滚动一下，对应滚动条的移动距离，可自行设定。</p>
+<p>下面贴出Html代码，仅供参考</p>
+<pre><code>   &lt;div class=&quot;scroll_box&quot; ref=&quot;scroll_box&quot;&gt;
+        &lt;div class=&quot;page_content&quot; :style=&quot;{top: page_content_top}&quot; ref=&quot;page_content&quot;&gt;
+            &lt;div class=&quot;page_item&quot; v-for=&quot;(value, index) in pages&quot;&gt;
+                &lt;div class=&quot;page_wrap&quot; @click=&quot;page_seledt(index)&quot; :class=&quot;{border: value.state}&quot;&gt;
+                    &lt;div class=&quot;page_thumbnail&quot;&gt;&lt;/div&gt;
+                    &lt;div class=&quot;page_name&quot;&gt;
+                        &lt;span&gt;{{index}}&lt;/span&gt;
+                        &lt;input type=&quot;text&quot; v-model=&quot;value.name&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;page_tool&quot; v-show=&quot;value.state&quot;&gt;
+                        &lt;div class=&quot;page_del&quot;&gt;&lt;/div&gt;
+                        &lt;div class=&quot;page_liked&quot;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;warp_scroll_bar&quot; v-show=&quot;scroll_bar_state&quot;  ref=&quot;scroll_bar&quot;&gt;
+            &lt;div class=&quot;scroll_bar&quot; :style=&quot;{top: scroll_bar_top,height: scroll_bar_height}&quot; :class=&quot;{ready:  mousestate}&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre><p>如果大家有什么意见或建议，请在下方评论区留言</p>
 ]]></content>
     
     <summary type="html">
@@ -148,30 +317,48 @@
     <published>2017-01-17T06:47:19.000Z</published>
     <updated>2017-01-19T08:22:21.000Z</updated>
     
-    <content type="html"><![CDATA[<p>Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为Flex布局。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    display: flex;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>行内元素也可以使用Flex布局。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    display: inline-flex;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>注意，设为Flex布局以后，子元素的<font color="red">float、clear</font>和<font color="red">vertical-align</font>属性将失效。</p>
+    <content type="html"><![CDATA[<p>Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为Flex布局。</p>
+<pre><code>.box{
+    display: flex;
+}
+</code></pre><p>行内元素也可以使用Flex布局。</p>
+<pre><code>.box{
+    display: inline-flex;
+}
+</code></pre><p>注意，设为Flex布局以后，子元素的<font color="red">float、clear</font>和<font color="red">vertical-align</font>属性将失效。</p>
 <hr>
 <p>采用Flex布局的元素，称为Flex容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称”项目”。</p>
 <p>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。<br>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</p>
-<p>容器有如下6个属性：<br>1.flex-direction：属性决定主轴的方向（即项目的排列方向）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">    flex-direction: row | row-reverse | column | column-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>有如下四个值:</p>
+<p>容器有如下6个属性：<br>1.flex-direction：属性决定主轴的方向（即项目的排列方向）。</p>
+<pre><code>.box {
+    flex-direction: row | row-reverse | column | column-reverse;
+}
+</code></pre><p>有如下四个值:</p>
 <ul>
 <li>row（默认值）：主轴为水平方向，起点在左端。</li>
 <li>row-reverse：主轴为水平方向，起点在右端。</li>
 <li>column：主轴为垂直方向，起点在上沿。</li>
 <li>column-reverse：主轴为垂直方向，起点在下沿。</li>
 </ul>
-<p>2.flex-wrap: 默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    flex-wrap: nowrap | wrap | wrap-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>它可能取三个值:</p>
+<p>2.flex-wrap: 默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。</p>
+<pre><code>.box{
+    flex-wrap: nowrap | wrap | wrap-reverse;
+}
+</code></pre><p>它可能取三个值:</p>
 <ul>
 <li>nowrap（默认）：不换行。</li>
 <li>wrap：换行，第一行在上方。</li>
 <li>wrap-reverse：换行，第一行在下方。</li>
 </ul>
-<p>3.flex-flow: 该属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">    flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>4.justify-content: 该属性定义了项目在主轴上的对齐方式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">    justify-content: flex-start | flex-end | center | space-between | space-around;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右:</p>
+<p>3.flex-flow: 该属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</p>
+<pre><code>.box {
+    flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;
+}
+</code></pre><p>4.justify-content: 该属性定义了项目在主轴上的对齐方式。</p>
+<pre><code>.box {
+    justify-content: flex-start | flex-end | center | space-between | space-around;
+}
+</code></pre><p>它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右:</p>
 <ul>
 <li>flex-start（默认值）：左对齐</li>
 <li>flex-end：右对齐</li>
@@ -179,8 +366,11 @@
 <li>space-between：两端对齐，项目之间的间隔都相等。</li>
 <li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
 </ul>
-<p>5.align-items: 该属性定义项目在交叉轴上如何对齐。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">    align-items: flex-start | flex-end | center | baseline | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下:</p>
+<p>5.align-items: 该属性定义项目在交叉轴上如何对齐。</p>
+<pre><code>.box {
+    align-items: flex-start | flex-end | center | baseline | stretch;
+}
+</code></pre><p>它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下:</p>
 <ul>
 <li>flex-start：交叉轴的起点对齐。</li>
 <li>flex-end：交叉轴的终点对齐。</li>
@@ -188,8 +378,11 @@
 <li>baseline: 项目的第一行文字的基线对齐。</li>
 <li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
 </ul>
-<p>6.align-content: 该属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">    align-content: flex-start | flex-end | center | space-between | space-around | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>该属性可能取6个值:</p>
+<p>6.align-content: 该属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+<pre><code>.box {
+    align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+}
+</code></pre><p>该属性可能取6个值:</p>
 <ul>
 <li>flex-start：与交叉轴的起点对齐。</li>
 <li>flex-end：与交叉轴的终点对齐。</li>
@@ -199,20 +392,42 @@
 <li>stretch（默认值）：轴线占满整个交叉轴。</li>
 </ul>
 <hr>
-<p>项目的属性,以下6个属性设置在项目上:<br>1.order: 定义项目的排列顺序。数值越小，排列越靠前，默认为0。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">    order: &lt;integer&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>2.flex-grow: 定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">    flex-grow: &lt;number&gt;; /* default 0 */</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>3.flex-shrink: 定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">    flex-shrink: &lt;number&gt;; /* default 1 */</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。<br>负值对该属性无效。</p>
-<p>4.flex-basis: 定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">    flex-basis: &lt;length&gt; | auto; /* default auto */</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>5.flex: 该属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">    flex: none | [ &lt;&apos;flex-grow&apos;&gt; &lt;&apos;flex-shrink&apos;&gt;? || &lt;&apos;flex-basis&apos;&gt; ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
-<p>6.align-self: 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">    align-self: auto | flex-start | flex-end | center | baseline | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>
+<p>项目的属性,以下6个属性设置在项目上:<br>1.order: 定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
+<pre><code>.item {
+    order: &lt;integer&gt;;
+}
+</code></pre><p>2.flex-grow: 定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
+<pre><code>.item {
+    flex-grow: &lt;number&gt;; /* default 0 */
+}
+</code></pre><p>3.flex-shrink: 定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
+<pre><code>.item {
+    flex-shrink: &lt;number&gt;; /* default 1 */
+}
+</code></pre><p>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。<br>负值对该属性无效。</p>
+<p>4.flex-basis: 定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
+<pre><code>.item {
+    flex-basis: &lt;length&gt; | auto; /* default auto */
+}
+</code></pre><p>5.flex: 该属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</p>
+<pre><code>.item {
+    flex: none | [ &lt;&#39;flex-grow&#39;&gt; &lt;&#39;flex-shrink&#39;&gt;? || &lt;&#39;flex-basis&#39;&gt; ]
+}
+</code></pre><p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
+<p>6.align-self: 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
+<pre><code>.item {
+    align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}
+</code></pre><p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为Flex布局。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;
+      &lt;p&gt;Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为Flex布局。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.box{
+    display: flex;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;行内元素也可以使用Flex
     
     </summary>
     
