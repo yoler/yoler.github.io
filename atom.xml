@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-09T09:51:17.000Z</updated>
+  <updated>2017-06-15T06:25:03.557Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>摄影笔记</title>
+    <link href="http://yoursite.com/2017/06/11/%E6%91%84%E5%BD%B1%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2017/06/11/摄影笔记/</id>
+    <published>2017-06-11T06:36:12.000Z</published>
+    <updated>2017-06-15T06:25:03.557Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="生活不止眼前的苟且-还有诗和远方"><a href="#生活不止眼前的苟且-还有诗和远方" class="headerlink" title="生活不止眼前的苟且 还有诗和远方"></a>生活不止眼前的苟且 还有诗和远方</h2><p><img src="/img/yf.JPG" alt="远方"></p>
+<p>向往 做一个纯粹的人 喜欢什么就去做 并把它做好</p>
+<h3 id="关于摄影"><a href="#关于摄影" class="headerlink" title="关于摄影"></a>关于摄影</h3><p>安塞尔 亚当斯(Ansel Adams)说过：“我们不止是用相机拍照，我们带到摄影中去的是所有我们读过的书，看过的电影，听过的音乐，爱过的人。”</p>
+<p><img src="/img/sunf.JPG" alt="远方"></p>
+<h3 id="关于生活"><a href="#关于生活" class="headerlink" title="关于生活"></a>关于生活</h3><p>处在一个快节奏的城市，每天奔走在来来往往熙熙攘攘的人群中，都在努力地追求我们各自想要的，却忘记了生活。有时候也应当做一次猫先生，感受生活，享受阳光。</p>
+<p><img src="/img/DSC_1491.JPG" alt="猫"></p>
+<p><img src="/img/DSC_1495.JPG" alt="猫"></p>
+<p><img src="/img/DSC_1517.JPG" alt="猫"></p>
+<p>偶尔也做一下二哈，自娱自乐，岂不开心</p>
+<p><img src="/img/DSC_1505.JPG" alt="狗"></p>
+<p><img src="/img/DSC_1521.JPG" alt="狗"></p>
+<p>假装很忧伤</p>
+<p><img src="/img/DSC_1498.JPG" alt="狗"></p>
+<p>通过镜头去看平时看不到的细节，记录感动与心动的瞬间，留下一张会讲故事的照片，这可能就是摄影的意义吧</p>
+<p><img src="/img/DSC_0052.JPG" alt="狗"></p>
+<p><img src="/img/DSC_0238.JPG" alt="狗"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;生活不止眼前的苟且-还有诗和远方&quot;&gt;&lt;a href=&quot;#生活不止眼前的苟且-还有诗和远方&quot; class=&quot;headerlink&quot; title=&quot;生活不止眼前的苟且 还有诗和远方&quot;&gt;&lt;/a&gt;生活不止眼前的苟且 还有诗和远方&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/img
+    
+    </summary>
+    
+      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="摄影" scheme="http://yoursite.com/tags/%E6%91%84%E5%BD%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>文件下载</title>
@@ -444,6 +482,44 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     
       &lt;p&gt;Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为Flex布局。&lt;/p&gt;
 &lt;pre class=&quot; language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Node批量重命名文件</title>
+    <link href="http://yoursite.com/2017/01/17/%E6%96%87%E4%BB%B6%E6%89%B9%E9%87%8F%E9%87%8D%E5%91%BD%E5%90%8D/"/>
+    <id>http://yoursite.com/2017/01/17/文件批量重命名/</id>
+    <published>2017-01-17T06:47:19.000Z</published>
+    <updated>2017-06-13T02:33:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<pre class=" language-javascript"><code class="language-javascript">    <span class="token string">'use strict'</span>
+    <span class="token keyword">let</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">let</span> pathname <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'./'</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'/test'</span>
+    fs<span class="token punctuation">.</span><span class="token function">readdir</span><span class="token punctuation">(</span>pathname<span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">,</span> files<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        files<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> index<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> oldpath <span class="token operator">=</span> pathname <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> filename
+            <span class="token keyword">let</span> newpath <span class="token operator">=</span> pathname <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> index <span class="token operator">+</span> <span class="token string">'.txt'</span>
+            fs<span class="token punctuation">.</span><span class="token function">rename</span><span class="token punctuation">(</span>oldpath<span class="token punctuation">,</span> newpath<span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'success'</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;pre class=&quot; language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;    &lt;span class=&quot;token string&quot;&gt;&#39;use strict&#39;&lt;/span&gt;
+    &lt;span class=&quot;toke
     
     </summary>
     
