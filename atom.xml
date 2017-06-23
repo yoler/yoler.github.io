@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-23T03:44:47.000Z</updated>
+  <updated>2017-06-23T05:24:12.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,17 +20,14 @@
     <link href="http://yoursite.com/2017/06/23/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2017/06/23/对象深拷贝总结/</id>
     <published>2017-06-23T03:09:20.000Z</published>
-    <updated>2017-06-23T03:44:47.000Z</updated>
+    <updated>2017-06-23T05:24:12.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="javaScript的变量类型"><a href="#javaScript的变量类型" class="headerlink" title="javaScript的变量类型"></a>javaScript的变量类型</h2><ol>
-<li><p>基本类型：5种基本数据类型Undefined、Null、Boolean、Number 和 String，变量是直接按值存放的，存放在栈内存中的简单数据段，可以直接访问。<br>这些类型的值本身就存储在栈内存中(string类型的实际值还是存储在堆内存中的，但是js把string当做基本类型来处理 )，不存在引用值的情况。</p>
-</li>
-<li><p>引用类型：存放在堆内存中的对象，变量保存的是一个指针，这个指针指向另一个位置。当需要访问引用类型（如对象，数组等）的值时，首先从栈中获得该对象的地址指针，然后再从堆内存中取得所需的数据。</p>
-</li>
-</ol>
-<h2 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h2><p>浅拷贝：浅拷贝是复制引用，复制后的引用都是指向同一个对象的实例，彼此之间的操作会互相影响<br>深拷贝：深拷贝不是简单的复制引用，而是在堆中重新分配内存，并且把源对象实例的所有属性都进行新建复制，以保证深拷贝的对象的引用图不包含任何原有对象或对象图上的任何对象，复制后的对象与原来的对象是完全隔离的</p>
+    <content type="html"><![CDATA[<h2 id="javaScript的变量类型"><a href="#javaScript的变量类型" class="headerlink" title="javaScript的变量类型"></a>javaScript的变量类型</h2><h4 id="1-基本类型："><a href="#1-基本类型：" class="headerlink" title="1. 基本类型："></a>1. 基本类型：</h4><p>5种基本数据类型Undefined、Null、Boolean、Number 和 String，变量是直接按值存放的，存放在栈内存中的简单数据段，可以直接访问。<br>这些类型的值本身就存储在栈内存中(string类型的实际值还是存储在堆内存中的，但是js把string当做基本类型来处理 )，不存在引用值的情况。</p>
+<h4 id="2-引用类型："><a href="#2-引用类型：" class="headerlink" title="2. 引用类型："></a>2. 引用类型：</h4><p>存放在堆内存中的对象，变量保存的是一个指针，这个指针指向另一个位置。当需要访问引用类型（如对象，数组等）的值时，首先从栈中获得该对象的地址指针，然后再从堆内存中取得所需的数据。</p>
+<h2 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h2><p><strong>浅拷贝：</strong>浅拷贝是复制引用，复制后的引用都是指向同一个对象的实例，彼此之间的操作会互相影响</p>
+<p><strong>深拷贝：</strong>深拷贝不是简单的复制引用，而是在堆中重新分配内存，并且把源对象实例的所有属性都进行新建复制，以保证深拷贝的对象的引用图不包含任何原有对象或对象图上的任何对象，复制后的对象与原来的对象是完全隔离的</p>
 <p>深拷贝和浅拷贝只针对像 <strong>Object</strong>, <strong>Array</strong> 这样的复杂对象的。<br>简单来说，浅拷贝只复制一层对象的属性，而深拷贝则递归复制了所有层级。</p>
-<p>JavaScript存储对象都是存地址的，所以浅拷贝会导致 obj1 和obj2 指向同一块内存地址。改变了其中一方的内容，都是在原来的内存上做修改会导致拷贝对象和源对象都发生改变，而深拷贝是开辟一块新的内存地址，将原对象的各个属性逐个复制进去。对拷贝对象和源对象各自的操作互不影响。</p>
+<p>JavaScript存储对象都是存地址的，所以浅拷贝会导致两个对象指向同一块内存地址。改变了其中一方的内容，都是在原来的内存上做修改会导致拷贝对象和源对象都发生改变，而深拷贝是开辟一块新的内存地址，将原对象的各个属性逐个复制进去。对拷贝对象和源对象各自的操作互不影响。</p>
 <h3 id="浅拷贝的实现"><a href="#浅拷贝的实现" class="headerlink" title="浅拷贝的实现"></a>浅拷贝的实现</h3><pre class=" language-javascript"><code class="language-javascript">    <span class="token keyword">function</span> <span class="token function">shallowClone</span><span class="token punctuation">(</span>copyObj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token keyword">var</span> i <span class="token keyword">in</span> copyObj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -46,9 +43,7 @@
     <span class="token keyword">var</span> y <span class="token operator">=</span> <span class="token function">shallowClone</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y<span class="token punctuation">.</span>b<span class="token punctuation">.</span>f <span class="token operator">===</span> x<span class="token punctuation">.</span>b<span class="token punctuation">.</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// true</span>
 </code></pre>
-<h3 id="深拷贝的实现"><a href="#深拷贝的实现" class="headerlink" title="深拷贝的实现"></a>深拷贝的实现</h3><ol>
-<li>Array的slice和concat方法<br>Array的slice和concat方法不修改原数组，只会返回一个浅拷贝了原数组中的元素的一个新数组。之所以把它放在深拷贝里，是因为它看起来像是深拷贝。而实际上它是浅拷贝。原数组的元素会按照下述规则拷贝：<br>如果该元素是个对象引用 （不是实际的对象），slice 会拷贝这个对象引用到新的数组里。两个对象引用都引用了同一个对象。如果被引用的对象发生改变，则新的和原来的数组中的这个元素也会发生改变。<br>对于字符串、数字及布尔值来说（不是 String、Number 或者 Boolean 对象），slice 会拷贝这些值到新的数组里。在别的数组里修改这些字符串或数字或是布尔值，将不会影响另一个数组。<br>如果向两个数组任一中添加了新元素，则另一个不会受到影响。例子如下：</li>
-</ol>
+<h3 id="深拷贝的实现"><a href="#深拷贝的实现" class="headerlink" title="深拷贝的实现"></a>深拷贝的实现</h3><h4 id="1-Array的slice和concat方法"><a href="#1-Array的slice和concat方法" class="headerlink" title="1. Array的slice和concat方法"></a>1. Array的slice和concat方法</h4><p>Array的slice和concat方法不修改原数组，只会返回一个浅拷贝了原数组中的元素的一个新数组。之所以把它放在深拷贝里，是因为它看起来像是深拷贝。而实际上它是浅拷贝。原数组的元素会按照下述规则拷贝：<br>如果该元素是个对象引用 （不是实际的对象），slice 会拷贝这个对象引用到新的数组里。两个对象引用都引用了同一个对象。如果被引用的对象发生改变，则新的和原来的数组中的这个元素也会发生改变。<br>对于字符串、数字及布尔值来说（不是 String、Number 或者 Boolean 对象），slice 会拷贝这些值到新的数组里。在别的数组里修改这些字符串或数字或是布尔值，将不会影响另一个数组。<br>如果向两个数组任一中添加了新元素，则另一个不会受到影响。例子如下：</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
 <span class="token keyword">var</span> array_shallow <span class="token operator">=</span> array<span class="token punctuation">;</span> 
 <span class="token keyword">var</span> array_concat <span class="token operator">=</span> array<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
@@ -68,9 +63,7 @@ array_slice<span class="token punctuation">[</span><span class="token number">2<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>array<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//array_slice</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>array_concat<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//array_slice</span>
 </code></pre>
-<ol>
-<li>JSON对象的parse和stringify<br>JSON对象是ES5中引入的新的类型（支持的浏览器为IE8+），JSON对象parse方法可以将JSON字符串反序列化成JS对象，stringify方法可以将JS对象序列化成JSON字符串，借助这两个方法，也可以实现对象的深拷贝。</li>
-</ol>
+<h4 id="2-JSON对象的parse和stringify"><a href="#2-JSON对象的parse和stringify" class="headerlink" title="2. JSON对象的parse和stringify"></a>2. JSON对象的parse和stringify</h4><p>JSON对象是ES5中引入的新的类型（支持的浏览器为IE8+），JSON对象parse方法可以将JSON字符串反序列化成JS对象，stringify方法可以将JS对象序列化成JSON字符串，借助这两个方法，也可以实现对象的深拷贝。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//例1</span>
 <span class="token keyword">var</span> source <span class="token operator">=</span> <span class="token punctuation">{</span> name<span class="token punctuation">:</span><span class="token string">"source"</span><span class="token punctuation">,</span> child<span class="token punctuation">:</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span><span class="token string">"child"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span> 
 <span class="token keyword">var</span> target <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -91,8 +84,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>child<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//Object {}</span>
 </code></pre>
 <p>这种方法使用较为简单，可以满足基本的深拷贝需求，而且能够处理JSON格式能表示的所有数据类型，但是对于正则表达式类型、函数类型等无法进行深拷贝(而且会直接丢失相应的值)。还有一点不好的地方是它会抛弃对象的constructor。也就是深拷贝之后，不管这个对象原来的构造函数是什么，在深拷贝之后都会变成Object。同时如果对象中存在循环引用的情况也无法正确处理。</p>
-<p>3.jQuery.extend()方法实现</p>
-<pre class=" language-javascript"><code class="language-javascript">jQuery<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> a <span class="token punctuation">:</span> <span class="token punctuation">{</span> a <span class="token punctuation">:</span> <span class="token string">"a"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> a <span class="token punctuation">:</span> <span class="token punctuation">{</span> b <span class="token punctuation">:</span> <span class="token string">"b"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h4 id="3-jQuery-extend-方法实现"><a href="#3-jQuery-extend-方法实现" class="headerlink" title="3.jQuery.extend()方法实现"></a>3.jQuery.extend()方法实现</h4><pre class=" language-javascript"><code class="language-javascript">jQuery<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> a <span class="token punctuation">:</span> <span class="token punctuation">{</span> a <span class="token punctuation">:</span> <span class="token string">"a"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> a <span class="token punctuation">:</span> <span class="token punctuation">{</span> b <span class="token punctuation">:</span> <span class="token string">"b"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 jQuery<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> a <span class="token punctuation">:</span> <span class="token punctuation">{</span> a <span class="token punctuation">:</span> <span class="token string">"a"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> a <span class="token punctuation">:</span> <span class="token punctuation">{</span> b <span class="token punctuation">:</span> <span class="token string">"b"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>jQuery.extend第一个参数可以是布尔值，用来设置是否深度拷贝的<br>源码及分析如下：</p>
@@ -158,8 +150,7 @@ a<span class="token punctuation">.</span>child <span class="token operator">=</s
 b<span class="token punctuation">.</span>parent <span class="token operator">=</span> a<span class="token punctuation">;</span>
 $<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//直接报了栈溢出。Uncaught RangeError: Maximum call stack size exceeded</span>
 </code></pre>
-<p>4.自己动手实现一个拷贝方法</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> $ <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<h4 id="4-自己动手实现一个拷贝方法"><a href="#4-自己动手实现一个拷贝方法" class="headerlink" title="4.自己动手实现一个拷贝方法"></a>4.自己动手实现一个拷贝方法</h4><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> $ <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
   <span class="token keyword">var</span> types <span class="token operator">=</span> <span class="token string">'Array Object String Date RegExp Function Boolean Number Null Undefined'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">function</span> <span class="token function">type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -193,8 +184,7 @@ $<span class="token punctuation">.</span><span class="token function">extend</sp
   <span class="token keyword">return</span> target<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>5.对于任何对象，它可能的类型有Boolean, Number, Date, String, RegExp, Array 以及 Object（所有自定义的对象全都继承于Object）实现深拷贝</p>
-<pre class=" language-javascript"><code class="language-javascript">Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>clone <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h4 id="5-对于任何对象，它可能的类型有Boolean-Number-Date-String-RegExp-Array-以及-Object（所有自定义的对象全都继承于Object）实现深拷贝"><a href="#5-对于任何对象，它可能的类型有Boolean-Number-Date-String-RegExp-Array-以及-Object（所有自定义的对象全都继承于Object）实现深拷贝" class="headerlink" title="5.对于任何对象，它可能的类型有Boolean, Number, Date, String, RegExp, Array 以及 Object（所有自定义的对象全都继承于Object）实现深拷贝"></a>5.对于任何对象，它可能的类型有Boolean, Number, Date, String, RegExp, Array 以及 Object（所有自定义的对象全都继承于Object）实现深拷贝</h4><pre class=" language-javascript"><code class="language-javascript">Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>clone <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> Constructor <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>constructor<span class="token punctuation">;</span>
     <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -246,8 +236,7 @@ RegExp<span class="token punctuation">.</span>prototype<span class="token punctu
     
     <summary type="html">
     
-      &lt;h2 id=&quot;javaScript的变量类型&quot;&gt;&lt;a href=&quot;#javaScript的变量类型&quot; class=&quot;headerlink&quot; title=&quot;javaScript的变量类型&quot;&gt;&lt;/a&gt;javaScript的变量类型&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;基本类型：5种基本
+      &lt;h2 id=&quot;javaScript的变量类型&quot;&gt;&lt;a href=&quot;#javaScript的变量类型&quot; class=&quot;headerlink&quot; title=&quot;javaScript的变量类型&quot;&gt;&lt;/a&gt;javaScript的变量类型&lt;/h2&gt;&lt;h4 id=&quot;1-基本类型：&quot;&gt;&lt;a h
     
     </summary>
     
